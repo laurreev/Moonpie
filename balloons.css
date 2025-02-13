@@ -1,0 +1,71 @@
+/* balloons.css */
+
+/* Balloon Container Styles */
+.balloon-container {
+    position: fixed;
+    bottom: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 999; /* Ensure balloons appear above other elements */
+}
+
+/* Balloon Styles */
+.balloon {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    transform: translateX(-50%) rotate(45deg);
+    border-radius: 50% 50% 0 0;
+    animation: floatUp linear infinite;
+    will-change: transform, opacity;
+}
+
+/* Top Left of Heart */
+.balloon::before,
+.balloon::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+/* Top Right of Heart */
+.balloon::before {
+    top: -15px;
+    left: 0;
+}
+
+/* Bottom of Heart */
+.balloon::after {
+    left: 15px;
+    top: 0;
+}
+
+/* Floating Animation */
+@keyframes floatUp {
+    0% {
+        bottom: -50px;
+        opacity: 0;
+        transform: translateX(-50%) rotate(45deg) scale(0.5);
+    }
+    10% {
+        opacity: 1;
+        transform: translateX(-50%) rotate(45deg) scale(1);
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        bottom: 110vh;
+        opacity: 0;
+        transform: translateX(-50%) rotate(45deg) scale(1);
+    }
+}

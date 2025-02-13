@@ -1,13 +1,39 @@
 body {
     margin: 0;
     padding: 0;
+    padding-bottom: 50px;
     background: #616161;
+    font-family: Arial, sans-serif;
 }
 
-body {
+nav {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+nav h1 {
     margin: 0;
+    font-size: 24px;
+}
+
+nav ul {
+    list-style: none;
     padding: 0;
-    background: #616161;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
 }
 
 .responsive-container {
@@ -19,10 +45,18 @@ body {
     border: 2px solid #fff; /* White border */
     background-color: #000;
     overflow: hidden; /* Ensure content stays inside the container */
-    display: flex; /* Center align the text inside the container */
-    align-items: center; /* Vertically center align */
+    display: flex; /* Use flexbox */
+    align-items: flex-start; /* Align items at the start (top) */
     justify-content: center; /* Horizontally center align */
     text-align: center; /* Center text alignment */
+}
+
+.text-background {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start; /* Align items at the start (top) */
+    justify-content: center;
 }
 
 p {
@@ -32,16 +66,32 @@ p {
     line-height: 12px;
     text-align: justify;
     -webkit-background-size: cover;
-    background-size: cover;
+    background-size: cover; /* Ensure the background image fits within the container */
     background-repeat: no-repeat;
     background-position: top; /* Align background image to the top */
     background: url(IMG_3922.jpg) no-repeat top;
-    background-attachment: fixed;
+    background-attachment: scroll; /* Make sure the image scrolls with content */
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    border: 1px solid transparent; /* Ensures the paragraph text doesn't overlap the container border */
+}
+
+footer {
+    background-color: #333;
+    color: #fff; /* Explicitly set text color to white */
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure the footer is above other elements */
+    left: 0; /* Position footer to the left */
+}
+
+footer h6 {
+    margin: 0;
+    padding: 0;
 }
 
 /* Media query for smaller screens */
