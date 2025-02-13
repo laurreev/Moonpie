@@ -14,9 +14,9 @@ function createBalloon() {
     balloon.classList.add('balloon');
 
     // Randomize size
-    const size = Math.random() * 20 + 20; // Balloons between 20px and 40px
+    const size = Math.random() * 20 + 40; // Balloons between 40px and 60px
     balloon.style.width = `${size}px`;
-    balloon.style.height = `${size}px`;
+    balloon.style.height = `${(size * 44) / 50}px`; // Adjust height to maintain aspect ratio
 
     // Randomize position
     const posX = Math.random() * 100;
@@ -28,13 +28,7 @@ function createBalloon() {
 
     // Randomize duration
     const duration = Math.random() * 10 + 5;
-    balloon.style.animationDuration = `${duration}s`;
-
-    // Randomize color
-    const colors = ['#FF6B6B', '#FF8E72', '#FFB48F', '#F49097', '#FCC5C0'];
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    balloon.style.backgroundColor = color;
-    balloon.style.boxShadow = `0 0 10px ${color}`;
+    balloon.style.animationDuration = `${duration}s, 3s, 3s`; // Ensure bloom and floatUp have proper durations
 
     // Append to the balloon container
     document.querySelector('.balloon-container').appendChild(balloon);

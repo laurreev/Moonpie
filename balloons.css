@@ -3,11 +3,10 @@
 /* Balloon Container Styles */
 .balloon-container {
     position: fixed;
-    bottom: -150px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 0;
+    left: 0;
     width: 100%;
-    pointer-events: none;
+    pointer-events: none; /* Allow clicks through the balloons */
     overflow: visible;
     z-index: 999; /* Ensure balloons appear above other elements */
 }
@@ -15,57 +14,46 @@
 /* Balloon Styles */
 .balloon {
     position: absolute;
-    bottom: 0;
+    bottom: -100px;
     left: 50%;
-    width: 30px;
-    height: 30px;
-    background-color: red;
-    transform: translateX(-50%) rotate(45deg);
-    border-radius: 50% 50% 0 0;
-    animation: floatUp linear infinite;
+    width: 50px;
+    height: 44px; /* Match the SVG's aspect ratio */
+    background-image: url('heart.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translateX(-50%) rotate(5deg); /* Add a slight rotation for a dynamic effect */
+    animation: floatUp 10s linear infinite, bloom 3s ease-in-out infinite alternate;
     will-change: transform, opacity;
-}
-
-/* Top Left of Heart */
-.balloon::before,
-.balloon::after {
-    content: '';
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: red;
-    border-radius: 50%;
-}
-
-/* Top Right of Heart */
-.balloon::before {
-    top: -15px;
-    left: 0;
-}
-
-/* Bottom of Heart */
-.balloon::after {
-    left: 15px;
-    top: 0;
 }
 
 /* Floating Animation */
 @keyframes floatUp {
     0% {
-        bottom: -50px;
+        bottom: -100px;
         opacity: 0;
-        transform: translateX(-50%) rotate(45deg) scale(0.5);
+        transform: translateX(-50%) scale(0.5) rotate(5deg);
     }
     10% {
         opacity: 1;
-        transform: translateX(-50%) rotate(45deg) scale(1);
-    }
-    90% {
-        opacity: 1;
+        transform: translateX(-50%) scale(1) rotate(5deg);
     }
     100% {
-        bottom: 110vh;
+        bottom: 110vh; /* Move beyond the top of the viewport */
         opacity: 0;
-        transform: translateX(-50%) rotate(45deg) scale(1);
+        transform: translateX(-50%) scale(1) rotate(5deg);
+    }
+}
+
+/* Blooming Animation */
+@keyframes bloom {
+    0% {
+        transform: scale(1) rotate(5deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(-5deg);
+    }
+    100% {
+        transform: scale(1) rotate(5deg);
     }
 }
