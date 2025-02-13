@@ -28,7 +28,7 @@ function createBalloon() {
 
     // Randomize duration
     const duration = Math.random() * 10 + 5;
-    balloon.style.animationDuration = `${duration}s, 3s, 3s`; // Ensure bloom and floatUp have proper durations
+    balloon.style.animationDuration = `${duration}s, 3s ease-in-out infinite alternate, 1.5s ease-in-out infinite alternate`; // Ensure bloom, glow, and floatUp have proper durations
 
     // Append to the balloon container
     document.querySelector('.balloon-container').appendChild(balloon);
