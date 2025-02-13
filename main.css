@@ -16,5 +16,15 @@ p {
     background-attachment: fixed;
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: rgb(225, 225, 255, 0);
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 600px) {
+    p {
+        background-size: contain; /* Resize the background image to fit the screen */
+        background-position: top;
+        background-attachment: scroll; /* Ensure the background scrolls with the content */
+    }
 }
