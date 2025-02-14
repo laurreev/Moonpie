@@ -3,11 +3,29 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./main.css" />
+	<link rel="stylesheet" href="main.css" />
 	 <!-- Link to the balloon CSS file -->
 	 <link rel="stylesheet" href="balloons.css">
 	 <link rel="stylesheet" href="about.css">
 	 <link rel="stylesheet" href="image.css">
+	 <link rel="icon" href="img/ico/favicon.ico" type="image/x-icon"> <!-- Add this line -->
+	 <link rel="apple-touch-icon" sizes="57x57" href="img/ico/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="img/ico/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/ico/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="img/ico/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/ico/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="img/ico/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="img/ico/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="img/ico/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/ico/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="img/ico/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="img/ico/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/ico/favicon-16x16.png">
+<link rel="manifest" href="img/ico/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="img/ico/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
 	<title>Moonpie & Minmin</title>
 </head>
 <body>
@@ -336,17 +354,19 @@
 	<div class="envelope">
 		<div class="envelope-message">Happy Valentine's Day!</div>
 		<button class="envelope-button">Open</button>
+		<audio id="background-music" src="audio/love.mp3" type="audio/mp3"></audio> <!-- Add this line -->
 	</div>
 
 	<div class="carousel-container" style="display: none;">
 		<div class="carousel">
-			<div class="carousel-image" style="background-image: url('img/06.JPG');"></div>
-			<div class="carousel-image" style="background-image: url('img/02.JPG');"></div>
-			<div class="carousel-image" style="background-image: url('img/03.JPG');"></div>
-			<div class="carousel-image" style="background-image: url('img/04.JPG');"></div>
-			<div class="carousel-image" style="background-image: url('img/05.jpg');"></div>
-			<div class="carousel-image" style="background-image: url('img/01.JPG');"></div>
-			<div class="carousel-image" style="background-image: url('img/07.jpg');"></div>
+			<div class="carousel-image" style="background-image: url('img/a01.jpg');"></div>
+			<div class="carousel-image" style="background-image: url('img/a02.jpg');"></div>
+			<div class="carousel-image" style="background-image: url('img/a03.jpg');"></div>
+			<div class="carousel-image" style="background-image: url('img/a04.jpg');"></div>
+			<div class="carousel-image" style="background-image: url('img/a05.jpg');"></div>
+			<div class="carousel-image" style="background-image: url('img/a06.jpg');"></div>
+			<div class="carousel-image" style="background-image: url('img/a07.jpg');"></div>
+			<div class="carousel-image" style="background-image: url('img/a08.jpg');"></div>
 			<!-- Add more images as needed -->
 		</div>
 		<div class="carousel-nav">
@@ -361,34 +381,38 @@
 		<div class="about-container">
 			<h2>About Us</h2>
 			<p>
-				Welcome to Moonpie & Minmin! We're a passionate duo dedicated to bringing joy, creativity, and a little bit of magic into the world. Our journey began with a shared love for exploring new ideas, creating captivating content, and making meaningful connections.
+				Hi there! We're Moonpie & Minmin, a couple who's been through our fair share of challenges but always come out stronger on the other side. Our journey is an emotional rollercoaster, but we always find a way to support each other and stay committed.
 			</p>
 			<p>
-				Moonpie is the dreamer, always finding inspiration in the beauty of everyday life. With a knack for storytelling and a heart full of wonder, Moonpie brings our projects to life with a unique blend of creativity and charm.
+				Moonpie is the dreamer, finding beauty in the little things. With a passion for storytelling and a heart full of wonder, Moonpie brings our experiences to life in the most creative and charming ways.
 			</p>
 			<p>
-				Minmin is the thinker, turning dreams into reality with meticulous planning and a keen eye for detail. Minmin's dedication and precision ensure that everything we create is both beautiful and functional.
+				Minmin is the planner, turning dreams into reality with careful planning and a keen eye for detail. Minmin's dedication ensures we navigate our challenges with grace and determination.
 			</p>
 			<p>
-				Together, we strive to inspire others to follow their passions and embrace the magic in their own lives. Whether it's through our artistic endeavors, heartfelt stories, or simply a shared moment of joy, we're here to make the world a brighter place.
+				Together, we hope to inspire you to stay strong and embrace your own journey. Through our shared experiences and moments of joy, we want to make the world a little brighter for everyone.
 			</p>
 			<p>
-				Thank you for being a part of our journey. Let's create something beautiful together!
+				Thanks for being part of our adventure. Let's face life's challenges together and create something beautiful!
 			</p>
 			<button id="back-button-about">Back</button>
 		</div>
 	</section>
+	
+
 
 	<section id="images-section" style="display: none;">
 		<div class="images-container">
 			<h2>Our Images</h2>
 			<div class="image-gallery">
-				<img src="img/06.JPG" alt="Image 1">
+				<img src="img/01.JPG" alt="Image 1">
 				<img src="img/02.JPG" alt="Image 2">
 				<img src="img/03.JPG" alt="Image 3">
 				<img src="img/04.JPG" alt="Image 4">
-				<img src="img/05.jpg" alt="Image 5">
-				<img src="img/01.JPG" alt="Image 6">
+				<img src="img/05.JPG" alt="Image 5">
+				<img src="img/06.jpg" alt="Image 6">
+				<img src="img/07.jpg" alt="Image 7">
+				<img src="img/08.jpg" alt="Image 8">
 				<!-- Add more images as needed -->
 			</div>
 			<button id="back-button-images">Back</button>

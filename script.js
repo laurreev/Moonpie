@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const envelopeButton = document.querySelector('.envelope-button');
     const carouselContainer = document.querySelector('.carousel-container');
     const closeButton = document.querySelector('.carousel-close'); // New button to hide the carousel
+    const backgroundMusic = document.getElementById('background-music'); // Get the audio element
     let currentIndex = 0;
 
     function updateCarousel() {
@@ -69,12 +70,16 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Open button clicked'); // Debugging
         document.querySelector('.envelope').style.display = 'none';
         carouselContainer.style.display = 'block';
+        backgroundMusic.play(); // Play the music when the "Open" button is clicked
     });
+   
 
     closeButton.addEventListener('click', () => {
         console.log('Close button clicked'); // Debugging
         carouselContainer.style.display = 'none';
         document.querySelector('.envelope').style.display = 'block';
+        backgroundMusic.pause(); // Pause the music when the carousel is closed
+        backgroundMusic.currentTime = 0; // Reset the music to the beginning
     });
 });
 
