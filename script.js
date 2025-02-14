@@ -172,16 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
         prevTranslate = currentTranslate;
         console.log('setPositionByIndex', currentIndex, currentTranslate);
         setCarouselPosition();
-
-        // Reattach event listeners
-        carousel.removeEventListener('touchstart', touchStart);
-        carousel.removeEventListener('touchmove', touchMove);
-        carousel.removeEventListener('touchend', touchEnd);
-        carousel.addEventListener('touchstart', touchStart);
-        carousel.addEventListener('touchmove', touchMove);
-        carousel.addEventListener('touchend', touchEnd);
     }
 });
+
 
 
 
