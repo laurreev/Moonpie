@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('touchEnd', movedBy);
 
         updateIndex(movedBy);
-        prevTranslate = currentTranslate; // Update prevTranslate after handling the swipe
+        resetDraggingState(); // Reset dragging state after handling the swipe
     }
 
     function mouseStart(event) {
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('mouseEnd', movedBy);
 
         updateIndex(movedBy);
-        prevTranslate = currentTranslate; // Update prevTranslate after handling the swipe
+        resetDraggingState(); // Reset dragging state after handling the swipe
     }
 
     function updateIndex(movedBy) {
@@ -173,8 +173,14 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('setPositionByIndex', currentIndex, currentTranslate);
         setCarouselPosition();
     }
-});
 
+    function resetDraggingState() {
+        startX = 0;
+        currentTranslate = prevTranslate;
+        isDragging = false;
+        console.log('resetDraggingState', currentTranslate, prevTranslate);
+    }
+});
 
 
 
