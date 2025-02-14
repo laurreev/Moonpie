@@ -1,6 +1,5 @@
-// script.js
-
 const numBalloons = 30;
+const balloons = []; // Keep track of balloon elements
 
 // Randomly generate balloons
 for (let i = 0; i < numBalloons; i++) {
@@ -27,6 +26,7 @@ function createBalloon() {
     balloon.addEventListener('click', popBalloon); // Add click event listener
 
     document.querySelector('.balloon-container').appendChild(balloon);
+    balloons.push(balloon); // Store the balloon element
 }
 
 function popBalloon(event) {
@@ -36,9 +36,6 @@ function popBalloon(event) {
         balloon.remove(); // Remove balloon after animation
     });
 }
-
-
-// script.js
 
 document.addEventListener('DOMContentLoaded', () => {
     const carousel = document.querySelector('.carousel');
@@ -54,6 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
         carouselContainer.style.display = 'block';
         carLabel.style.display = 'block';
         backgroundMusic.play();
+
+        // Disable balloons
+        balloons.forEach(balloon => {
+            balloon.style.pointerEvents = 'none';
+            balloon.style.opacity = '0.5'; // Optional: Make balloons semi-transparent
+        });
     });
 
     closeButton.addEventListener('click', () => {
@@ -63,6 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
         carLabel.style.display = 'none';
         backgroundMusic.pause();
         backgroundMusic.currentTime = 0;
+
+        // Enable balloons
+        balloons.forEach(balloon => {
+            balloon.style.pointerEvents = 'auto';
+            balloon.style.opacity = '1'; // Optional: Restore balloon opacity
+        });
     });
 
     let startX = 0;
@@ -153,7 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setCarouselPosition();
     }
 });
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const aboutButton = document.getElementById('about-button');
