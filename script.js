@@ -59,8 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
     closeButton.addEventListener('click', () => {
         console.log('Close button clicked');
         carouselContainer.style.display = 'none';
-        carLabel.style.display = 'none';
         document.querySelector('.envelope').style.display = 'block';
+        carLabel.style.display = 'none';
         backgroundMusic.pause();
         backgroundMusic.currentTime = 0;
     });
@@ -101,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('touchEnd', movedBy);
 
         updateIndex(movedBy);
+        prevTranslate = currentTranslate; // Update prevTranslate after handling the swipe
     }
 
     function mouseStart(event) {
@@ -124,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('mouseEnd', movedBy);
 
         updateIndex(movedBy);
+        prevTranslate = currentTranslate; // Update prevTranslate after handling the swipe
     }
 
     function updateIndex(movedBy) {
@@ -151,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setCarouselPosition();
     }
 });
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const aboutButton = document.getElementById('about-button');
