@@ -6,14 +6,16 @@
 	<link rel="stylesheet" href="./main.css" />
 	 <!-- Link to the balloon CSS file -->
 	 <link rel="stylesheet" href="balloons.css">
+	 <link rel="stylesheet" href="about.css">
+	 <link rel="stylesheet" href="image.css">
 	<title>Moonpie & Minmin</title>
 </head>
 <body>
 	<nav>
         <h1>Moonpie & Minmin</h1>
         <ul>
-            <li><a href="#about-us">About Us</a></li>
-            <li><a href="#images">Images</a></li>
+            <li><a href="#" id="about-button">About Us</a></li>
+            <li><a href="#" id="images-button">Images</a></li>
         </ul>
     </nav>
 
@@ -22,7 +24,10 @@
         <!-- Balloons will be injected here by JavaScript -->
     </div>
 
+	<div id="main-content">
+
 	<div class="responsive-container">
+		<div class="text-overlay"></div>
 		<div class="text-background">
 	<p>Halik ba talaga
 		Ang gagana sa iyong tingin, hmm
@@ -327,6 +332,69 @@
 		</p>
 	</div>
 	</div>
+
+	<div class="envelope">
+		<div class="envelope-message">Happy Valentine's Day!</div>
+		<button class="envelope-button">Open</button>
+	</div>
+
+	<div class="carousel-container" style="display: none;">
+		<div class="carousel">
+			<div class="carousel-image" style="background-image: url('img/06.jpg');"></div>
+			<div class="carousel-image" style="background-image: url('img/02.jpg');"></div>
+			<div class="carousel-image" style="background-image: url('img/03.jpg');"></div>
+			<div class="carousel-image" style="background-image: url('img/04.jpg');"></div>
+			<div class="carousel-image" style="background-image: url('img/05.jpg');"></div>
+			<div class="carousel-image" style="background-image: url('img/01.jpg');"></div>
+			<div class="carousel-image" style="background-image: url('img/07.jpg');"></div>
+			<!-- Add more images as needed -->
+		</div>
+		<div class="carousel-nav">
+			<button class="carousel-prev">Previous</button>
+			<button class="carousel-next">Next</button>
+		</div>
+		<button class="carousel-close">Close</button> <!-- New button to hide the carousel -->
+	</div>
+	</div>
+	
+	<section id="about-us" style="display: none;">
+		<div class="about-container">
+			<h2>About Us</h2>
+			<p>
+				Welcome to Moonpie & Minmin! We're a passionate duo dedicated to bringing joy, creativity, and a little bit of magic into the world. Our journey began with a shared love for exploring new ideas, creating captivating content, and making meaningful connections.
+			</p>
+			<p>
+				Moonpie is the dreamer, always finding inspiration in the beauty of everyday life. With a knack for storytelling and a heart full of wonder, Moonpie brings our projects to life with a unique blend of creativity and charm.
+			</p>
+			<p>
+				Minmin is the thinker, turning dreams into reality with meticulous planning and a keen eye for detail. Minmin's dedication and precision ensure that everything we create is both beautiful and functional.
+			</p>
+			<p>
+				Together, we strive to inspire others to follow their passions and embrace the magic in their own lives. Whether it's through our artistic endeavors, heartfelt stories, or simply a shared moment of joy, we're here to make the world a brighter place.
+			</p>
+			<p>
+				Thank you for being a part of our journey. Let's create something beautiful together!
+			</p>
+			<button id="back-button-about">Back</button>
+		</div>
+	</section>
+
+	<section id="images-section" style="display: none;">
+		<div class="images-container">
+			<h2>Our Images</h2>
+			<div class="image-gallery">
+				<img src="img/01.jpg" alt="Image 1">
+				<img src="img/02.jpg" alt="Image 2">
+				<img src="img/03.jpg" alt="Image 3">
+				<img src="img/04.jpg" alt="Image 4">
+				<img src="img/05.jpg" alt="Image 5">
+				<img src="img/06.jpg" alt="Image 6">
+				<!-- Add more images as needed -->
+			</div>
+			<button id="back-button-images">Back</button>
+		</div>
+	</section>
+	
 
 	<footer>
         <h6>All rights reserved to Moonpie & Minmin 2025.</h6>

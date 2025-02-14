@@ -6,7 +6,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    pointer-events: none; /* Allow clicks through the balloons */
+    pointer-events: none; /* Allow clicks through the container */
     overflow: visible;
     z-index: 999; /* Ensure balloons appear above other elements */
 }
@@ -25,7 +25,8 @@
     transform: translateX(-50%) rotate(5deg); /* Add a slight rotation for a dynamic effect */
     animation: floatUp 10s linear infinite, bloom 3s ease-in-out infinite alternate;
     will-change: transform, opacity;
-    /* Use a pseudo-element for the glow */
+    cursor: pointer; /* Make balloons clickable */
+    pointer-events: all; /* Allow pointer events on balloons */
 }
 
 .balloon::before {
@@ -43,7 +44,25 @@
     animation: glow 1.5s ease-in-out infinite alternate;
     border-radius: 50%;
     clip-path: circle(50%);
+    pointer-events: none; /* Prevent pointer events on glow */
 }
+
+/* Pop Animation */
+@keyframes pop {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5) rotate(45deg);
+        opacity: 0.75;
+    }
+    100% {
+        transform: scale(0.1) rotate(90deg);
+        opacity: 0;
+    }
+}
+
 
 /* Floating Animation */
 @keyframes floatUp {

@@ -1,0 +1,74 @@
+.images-container {
+    width: 90%;
+    max-width: 1200px; /* Increased max-width for better layout */
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.images-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #FF6B6B;
+}
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.image-gallery img {
+    flex: 1 1 calc(33.333% - 20px); /* Adjust size to fit 3 images per row */
+    max-width: calc(33.333% - 20px); /* Adjust size to fit 3 images per row */
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    object-fit: cover; /* Ensure images maintain aspect ratio */
+}
+
+/* back-button.css */
+#back-button-about, #back-button-images {
+    padding: 10px 20px;
+    background: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    pointer-events: all;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+/* Hide the About Us and Images sections initially */
+#about-us, #images-section {
+    display: none;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 600px) {
+    .images-container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .images-container h2 {
+        font-size: 24px;
+    }
+
+    .image-gallery img {
+        flex: 1 1 calc(50% - 10px); /* Adjust size to fit 2 images per row on small screens */
+        max-width: calc(50% - 10px); /* Adjust size to fit 2 images per row on small screens */
+        height: auto;
+        object-fit: cover; /* Ensure images maintain aspect ratio */
+    }
+
+    #back-button-about, #back-button-images {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}

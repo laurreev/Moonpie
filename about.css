@@ -1,0 +1,60 @@
+.about-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.about-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #FF6B6B;
+}
+
+.about-container p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#back-button {
+    padding: 10px 20px;
+    background: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+/* Hide the About Us section initially */
+#about-us {
+    display: none;
+}
+
+
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 600px) {
+    .about-container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .about-container h2 {
+        font-size: 24px;
+    }
+
+    .about-container p {
+        font-size: 14px;
+    }
+    #back-button {
+        padding: 8px 16px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+}
