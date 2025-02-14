@@ -101,8 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function touchStart(event) {
         startX = event.touches[0].clientX;
         isDragging = true;
-        console.log('touchStart', startX);
         animationID = requestAnimationFrame(animation);
+        console.log('touchStart', startX);
     }
 
     function touchMove(event) {
@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentX = event.touches[0].clientX;
         currentTranslate = prevTranslate + currentX - startX;
         console.log('touchMove', currentX, currentTranslate);
+        setCarouselPosition();
     }
 
     function touchEnd() {
@@ -125,8 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function mouseStart(event) {
         startX = event.clientX;
         isDragging = true;
-        console.log('mouseStart', startX);
         animationID = requestAnimationFrame(animation);
+        console.log('mouseStart', startX);
     }
 
     function mouseMove(event) {
@@ -134,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentX = event.clientX;
         currentTranslate = prevTranslate + currentX - startX;
         console.log('mouseMove', currentX, currentTranslate);
+        setCarouselPosition();
     }
 
     function mouseEnd() {
@@ -158,8 +160,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function animation() {
-        setCarouselPosition();
-        if (animationID) requestAnimationFrame(animation);
+        if (isDragging) {
+            setCarouselPosition();
+            requestAnimationFrame(animation);
+        }
     }
 
     function setCarouselPosition() {
@@ -170,18 +174,26 @@ document.addEventListener('DOMContentLoaded', () => {
     function setPositionByIndex() {
         currentTranslate = currentIndex * -carousel.offsetWidth;
         prevTranslate = currentTranslate;
-        console.log('setPositionByIndex', currentIndex, currentTranslate);
         setCarouselPosition();
+        console.log('setPositionByIndex', currentIndex, currentTranslate);
     }
 
     function resetDraggingState() {
         startX = 0;
-        currentTranslate = prevTranslate;
         isDragging = false;
         console.log('resetDraggingState', currentTranslate, prevTranslate);
     }
-});
 
+    carousel.addEventListener('touchstart', touchStart);
+    carousel.addEventListener('touchend', touchEnd);
+    carousel.addEventListener('touchmove', touchMove);
+
+    // Add mouse event listeners
+    carousel.addEventListener('mousedown', mouseStart);
+    carousel.addEventListener('mouseup', mouseEnd);
+    carousel.addEventListener('mouseleave', mouseEnd); // Handle the case where the mouse leaves the carousel while dragging
+    carousel.addEventListener('mousemove', mouseMove);
+});
 
 
 document.addEventListener('DOMContentLoaded', () => {
