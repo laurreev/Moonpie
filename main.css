@@ -118,6 +118,9 @@ nav ul li a {
     pointer-events: all; /* Allow interaction */
     z-index: 998; /* Ensure it appears below the envelope */
     display: none; /* Hide the carousel initially */
+    touch-action: pan-x; /* Allow horizontal scrolling */
+    cursor: pointer;
+    pointer-events: all; /* Ensure button is clickable */
 }
 
 .carousel {
@@ -131,27 +134,11 @@ nav ul li a {
     background-size: cover;
     background-position: center;
     position: relative;
-}
-
-.carousel-nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-    pointer-events: none; /* Prevent interfering with carousel clicks */
-}
-
-.carousel-nav button {
-    pointer-events: all; /* Allow interaction with buttons */
-    background: #FF6B6B;
-    border-radius: 5px;
-    color: white;
-    border: none;
-    padding: 10px;
+    touch-action: pan-x; /* Allow horizontal scrolling */
     cursor: pointer;
+    pointer-events: all; /* Ensure button is clickable */
 }
+
 
 .carousel-close {
     display: block;
@@ -169,6 +156,16 @@ nav ul li a {
     left: 50%;
     transform: translateX(-50%); /* Center the button horizontally */
 }
+
+.carousel-label {
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+    z-index: 999; /* Ensure it appears on top */
+}
+
 
 
 footer {

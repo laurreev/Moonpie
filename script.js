@@ -42,45 +42,114 @@ function popBalloon(event) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const carousel = document.querySelector('.carousel');
-    const carouselImages = document.querySelectorAll('.carousel-image');
-    const prevButton = document.querySelector('.carousel-prev');
-    const nextButton = document.querySelector('.carousel-next');
     const envelopeButton = document.querySelector('.envelope-button');
     const carouselContainer = document.querySelector('.carousel-container');
-    const closeButton = document.querySelector('.carousel-close'); // New button to hide the carousel
-    const backgroundMusic = document.getElementById('background-music'); // Get the audio element
-    let currentIndex = 0;
-
-    function updateCarousel() {
-        const offset = -currentIndex * 100;
-        carousel.style.transform = `translateX(${offset}%)`;
-    }
-
-    prevButton.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
-        updateCarousel();
-    });
-
-    nextButton.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % carouselImages.length;
-        updateCarousel();
-    });
+    const closeButton = document.querySelector('.carousel-close');
+    const backgroundMusic = document.getElementById('background-music');
+    const carLabel = document.querySelector('.carousel-label');
 
     envelopeButton.addEventListener('click', () => {
-        console.log('Open button clicked'); // Debugging
+        console.log('Open button clicked');
         document.querySelector('.envelope').style.display = 'none';
         carouselContainer.style.display = 'block';
-        backgroundMusic.play(); // Play the music when the "Open" button is clicked
+        carLabel.style.display = 'block';
+        backgroundMusic.play();
     });
-   
 
     closeButton.addEventListener('click', () => {
-        console.log('Close button clicked'); // Debugging
+        console.log('Close button clicked');
         carouselContainer.style.display = 'none';
+        carLabel.style.display = 'none';
         document.querySelector('.envelope').style.display = 'block';
-        backgroundMusic.pause(); // Pause the music when the carousel is closed
-        backgroundMusic.currentTime = 0; // Reset the music to the beginning
+        backgroundMusic.pause();
+        backgroundMusic.currentTime = 0;
     });
+
+    let startX = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationID;
+    let currentIndex = 0;
+    let isDragging = false;
+
+    carousel.addEventListener('touchstart', touchStart);
+    carousel.addEventListener('touchend', touchEnd);
+    carousel.addEventListener('touchmove', touchMove);
+
+    // Add mouse event listeners
+    carousel.addEventListener('mousedown', mouseStart);
+    carousel.addEventListener('mouseup', mouseEnd);
+    carousel.addEventListener('mouseleave', mouseEnd); // Handle the case where the mouse leaves the carousel while dragging
+    carousel.addEventListener('mousemove', mouseMove);
+
+    function touchStart(event) {
+        startX = event.touches[0].clientX;
+        console.log('touchStart', startX);
+        animationID = requestAnimationFrame(animation);
+    }
+
+    function touchMove(event) {
+        if (isDragging) return; // Prevent touchmove if dragging with the mouse
+        const currentX = event.touches[0].clientX;
+        currentTranslate = prevTranslate + currentX - startX;
+        console.log('touchMove', currentX, currentTranslate);
+    }
+
+    function touchEnd() {
+        cancelAnimationFrame(animationID);
+        const movedBy = currentTranslate - prevTranslate;
+        console.log('touchEnd', movedBy);
+
+        updateIndex(movedBy);
+    }
+
+    function mouseStart(event) {
+        startX = event.clientX;
+        isDragging = true;
+        console.log('mouseStart', startX);
+        animationID = requestAnimationFrame(animation);
+    }
+
+    function mouseMove(event) {
+        if (!isDragging) return;
+        const currentX = event.clientX;
+        currentTranslate = prevTranslate + currentX - startX;
+        console.log('mouseMove', currentX, currentTranslate);
+    }
+
+    function mouseEnd() {
+        isDragging = false;
+        cancelAnimationFrame(animationID);
+        const movedBy = currentTranslate - prevTranslate;
+        console.log('mouseEnd', movedBy);
+
+        updateIndex(movedBy);
+    }
+
+    function updateIndex(movedBy) {
+        if (movedBy < -100 && currentIndex < carousel.children.length - 1) {
+            currentIndex++;
+        }
+        if (movedBy > 100 && currentIndex > 0) {
+            currentIndex--;
+        }
+        setPositionByIndex();
+    }
+
+    function animation() {
+        setCarouselPosition();
+        if (animationID) requestAnimationFrame(animation);
+    }
+
+    function setCarouselPosition() {
+        carousel.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    function setPositionByIndex() {
+        currentTranslate = currentIndex * -carousel.offsetWidth;
+        prevTranslate = currentTranslate;
+        setCarouselPosition();
+    }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -120,6 +189,3 @@ document.addEventListener('DOMContentLoaded', () => {
         mainContent.style.display = 'block';
     });
 });
-
-
-
