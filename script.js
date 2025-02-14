@@ -45,6 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const backgroundMusic = document.getElementById('background-music');
     const carLabel = document.querySelector('.carousel-label');
 
+    // Store balloon elements
+    const balloons = [];
+    for (let i = 0; i < numBalloons; i++) {
+        const balloon = document.querySelector(`.balloon:nth-child(${i + 1})`);
+        balloons.push(balloon);
+    }
+
     envelopeButton.addEventListener('click', () => {
         console.log('Open button clicked');
         document.querySelector('.envelope').style.display = 'none';
@@ -93,18 +100,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function touchStart(event) {
         startX = event.touches[0].clientX;
+        isDragging = true;
         console.log('touchStart', startX);
         animationID = requestAnimationFrame(animation);
     }
 
     function touchMove(event) {
-        if (isDragging) return; // Prevent touchmove if dragging with the mouse
+        if (!isDragging) return;
         const currentX = event.touches[0].clientX;
         currentTranslate = prevTranslate + currentX - startX;
         console.log('touchMove', currentX, currentTranslate);
     }
 
     function touchEnd() {
+        isDragging = false;
         cancelAnimationFrame(animationID);
         const movedBy = currentTranslate - prevTranslate;
         console.log('touchEnd', movedBy);
@@ -138,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateIndex(movedBy) {
+        console.log('updateIndex', movedBy);
         if (movedBy < -100 && currentIndex < carousel.children.length - 1) {
             currentIndex++;
         }
@@ -154,14 +164,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setCarouselPosition() {
         carousel.style.transform = `translateX(${currentTranslate}px)`;
+        console.log('setCarouselPosition', currentTranslate);
     }
 
     function setPositionByIndex() {
         currentTranslate = currentIndex * -carousel.offsetWidth;
         prevTranslate = currentTranslate;
+        console.log('setPositionByIndex', currentIndex, currentTranslate);
         setCarouselPosition();
+
+        // Reattach event listeners
+        carousel.removeEventListener('touchstart', touchStart);
+        carousel.removeEventListener('touchmove', touchMove);
+        carousel.removeEventListener('touchend', touchEnd);
+        carousel.addEventListener('touchstart', touchStart);
+        carousel.addEventListener('touchmove', touchMove);
+        carousel.addEventListener('touchend', touchEnd);
     }
 });
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const aboutButton = document.getElementById('about-button');
